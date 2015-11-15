@@ -1,4 +1,17 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sections:
+"   -> General
+"   -> VIM user interface
+"   -> Colors and Fonts
+"   -> Files and backups
+"   -> Text, tab and indent related
+"   -> Status line
+"   -> Helper functions
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable filetype plugins
@@ -82,3 +95,25 @@ if executable('fcitx-remote')
     autocmd InsertLeave * call Fcitx2en()
     "autocmd InsertEnter * call Fcitx2zh()
 endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Status line
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Allways show the status line
+set laststatus=2
+
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper functions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'PASTE MODE  '
+    en
+    return ''
+endfunction
